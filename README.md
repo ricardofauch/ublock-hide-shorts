@@ -5,4 +5,4 @@ Copy the link below, go to uBlock Origin > Dashboard > Filter lists, scroll to t
 - [https://raw.githubusercontent.com/ricardofauch/ublock-hide-shorts/master/list.txt](ubo:subscribe?location=https://raw.githubusercontent.com/ricardofauch/ublock-hide-shorts/main/list.txt)
 
 ## License
-See [LICENSE.md](https://github.com/ricardofauch/ublock-hide-shorts/blob/master/LICENSE.md)
+See [LICENSE.md](https://github.com/ricardofauch/ublock-hide-shorts/blob/main/LICENSE)
