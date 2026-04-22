@@ -1,7 +1,7 @@
 ! Title: Hide All Shorts
 ! Description: Hide all traces of YouTube shorts, Instagram or Facebook Reels
 ! Version: 2026.04.23
-! Last modified: 2026-04-23
+! Last modified: 2026-04-24
 ! Expires: 2 weeks (update frequency)
 ! Homepage: https://github.com/ricardofauch/ublock-hide-shorts
 ! License: https://github.com/ricardofauch/ublock-hide-shorts/blob/main/LICENSE
