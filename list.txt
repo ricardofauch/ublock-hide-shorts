@@ -1,10 +1,10 @@
 ! Title: Hide All Shorts
 ! Description: Hide all traces of YouTube shorts, Instagram or Facebook Reels
-! Version: 1.00.00
-! Last modified: 2025-06-27 12:24
+! Version: 2026.04.22
+! Last modified: 2026-04-22
 ! Expires: 2 weeks (update frequency)
 ! Homepage: https://github.com/ricardofauch/ublock-hide-shorts
-! License: https://github.com/ricardofauch/ublock-hide-shorts/blob/master/LICENSE.md
+! License: https://github.com/ricardofauch/ublock-hide-shorts/blob/main/LICENSE
 
 
 !!! YOUTUBE SHORTS !!!
@@ -31,7 +31,7 @@ www.youtube.com##ytd-mini-guide-entry-renderer:has(.title:has-text(/^Shorts$/i))
 www.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytd-rich-section-renderer:has(#title:has-text(/(^| )Shorts( |$)/i))
 www.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytd-reel-shelf-renderer:has(.ytd-reel-shelf-renderer:has-text(/(^| )Shorts( |$)/i))
 
-! Hide shorts tab on channel pages`
+! Hide shorts tab on channel pages
 ! Old style
 www.youtube.com##tp-yt-paper-tab:has(.tp-yt-paper-tab:has-text(Shorts))
 ! New style (2023-10)
@@ -44,19 +44,23 @@ www.youtube.com##ytd-reel-shelf-renderer:has(#title:has-text(/(^| )Shorts.?Remix
 www.youtube.com##yt-chip-cloud-chip-renderer:has(yt-formatted-string:has-text(/^Shorts$/i))
 
 ! Hide shorts grid on search results
+! Text-based match on the Shorts header — resilient to CSS class naming changes
 www.youtube.com##grid-shelf-view-model:has(h2:has-text(/^Shorts$/i))
 www.youtube.com##ytd-item-section-renderer:has(grid-shelf-view-model:has(h2:has-text(/^Shorts$/i)))
 www.youtube.com##.ytGridShelfViewModelHost:has(h2:has-text(/^Shorts$/i))
+
+! Keep only videos in search results
+! Note: also hides ytd-secondary-search-container-renderer ("People also search for" sidebar).
+! Remove the trailing ",ytd-secondary-search-container-renderer" if you want that sidebar back.
 youtube.com##ytd-search ytd-item-section-renderer>#contents>:is(:not(ytd-video-renderer,yt-showing-results-for-renderer,[icon-name="promo-full-height:EMPTY_SEARCH"]),ytd-video-renderer:has([aria-label="Shorts"])),ytd-secondary-search-container-renderer
 
-! Hide shorts in 'special containers' on the home page
-www.youtube.com##.ytdRichGridGroupContents
-www.youtube.com##ytd-rich-grid-group.ytdRichGridGroupHost
+! Hide shorts in 'special containers' on the home page (scoped to Shorts-labeled groups only)
+www.youtube.com##ytd-rich-grid-group.ytdRichGridGroupHost:has(h2:has-text(/^Shorts$/i),#title:has-text(/(^| )Shorts( |$)/i))
 
 !!! MOBILE !!!
 
 ! Hide all videos in home feed containing the phrase "#shorts"
-www.youtube.com##ytm-rich-item-renderer:has(#video-title:has-text(/(^| )#Shorts?( |$)/i))
+m.youtube.com##ytm-rich-item-renderer:has(#video-title:has-text(/(^| )#Shorts?( |$)/i))
 
 ! Hide all videos in subscription feed containing the phrase "#shorts"
 m.youtube.com##ytm-item-section-renderer:has(#video-title:has-text(/(^| )#Shorts?( |$)/i))
@@ -72,6 +76,9 @@ m.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytm-rich-section-renderer
 m.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytm-rich-section-renderer:has(.yt-core-attributed-string:has-text(/(^| )Shorts( |$)/i))
 m.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytm-reel-shelf-renderer.item:has(.reel-shelf-title-wrapper .yt-core-attributed-string:has-text(/(^| )Shorts( |$)/i))
 
+! Hide shorts sections on search page
+m.youtube.com##ytm-reel-shelf-renderer:has(ytm-shorts-lockup-view-model)
+
 ! Hide shorts tab on channel pages
 ! Old style
 m.youtube.com##.single-column-browse-results-tabs>a:has-text(Shorts)
@@ -84,7 +91,9 @@ m.youtube.com##ytm-reel-shelf-renderer:has(.reel-shelf-title-wrapper .yt-core-at
 ! Hide shorts category on homepage
 m.youtube.com##ytm-chip-cloud-chip-renderer:has(.yt-core-attributed-string:has-text(/^Shorts$/i))
 
-!!! INSTAGRAM REELS!!!
+!!! INSTAGRAM REELS !!!
+! Note: text-based rules match the English UI label "Reels". Most rules below use href/aria-label,
+! which are language-agnostic, but users on non-English Instagram may need to add variants.
 
 ! Hide Reels navigation button/link
 www.instagram.com##a[href="/reels/"][role="link"]
@@ -103,8 +112,9 @@ m.instagram.com##a[href="/reels/"]
 m.instagram.com##svg[aria-label="Reels"]
 
 !!! FACEBOOK REELS !!!
-
-! === FACEBOOK REELS BLOCKING ===
+! Note: text-based rules (span:has-text(/^Reels$/)) only match the English UI label.
+! href-based, aria-label, and data-pagelet rules are language-agnostic and will still work
+! on localized Facebook; users on non-English Facebook can remove or replace the text-matched rules.
 
 ! Hide Facebook Watch/Reels navigation link
 www.facebook.com##a[href="https://www.facebook.com/watch/"]:has(span:has-text(/^Reels$/))
@@ -123,7 +133,7 @@ www.facebook.com##div:has(> a[href^="/reel/"]:has(span:has-text(/^Reels$/)))
 ! Hide Facebook Reels by targeting the padding container
 www.facebook.com##div[style*="padding-left: 8px"]:has(a[href^="/reel/"]:has(span:has-text(/^Reels$/)))
 
-! Hide individual Facebook Reels content
+! Hide individual Facebook Reels content (language-agnostic)
 www.facebook.com##div[role="article"]:has([aria-label*="reel" i])
 www.facebook.com##div[data-pagelet*="reel" i]
 
