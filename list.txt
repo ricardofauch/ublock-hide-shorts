@@ -52,7 +52,11 @@ www.youtube.com##.ytGridShelfViewModelHost:has(h2:has-text(/^Shorts$/i))
 ! Keep only videos in search results
 ! Note: also hides ytd-secondary-search-container-renderer ("People also search for" sidebar).
 ! Remove the trailing ",ytd-secondary-search-container-renderer" if you want that sidebar back.
-youtube.com##ytd-search ytd-item-section-renderer>#contents>:is(:not(ytd-video-renderer,yt-showing-results-for-renderer,[icon-name="promo-full-height:EMPTY_SEARCH"]),ytd-video-renderer:has([aria-label="Shorts"])),ytd-secondary-search-container-renderer
+!youtube.com##ytd-search ytd-item-section-renderer>#contents>:is(:not(ytd-video-renderer,yt-showing-results-for-renderer,[icon-name="promo-full-height:EMPTY_SEARCH"]),ytd-video-renderer:has([aria-label="Shorts"])),ytd-secondary-search-container-renderer
+
+youtube.com##ytd-search ytd-video-renderer:has([overlay-style="SHORTS"])
+youtube.com##ytd-search ytd-video-renderer:has([aria-label="Shorts" i])
+youtube.com##ytd-search grid-shelf-view-model:has(h2:has-text(/^Shorts$/i))
 
 ! Hide shorts in 'special containers' on the home page (scoped to Shorts-labeled groups only)
 www.youtube.com##ytd-rich-grid-group.ytdRichGridGroupHost:has(h2:has-text(/^Shorts$/i),#title:has-text(/(^| )Shorts( |$)/i))
