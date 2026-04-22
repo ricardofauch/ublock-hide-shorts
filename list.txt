@@ -1,7 +1,7 @@
 ! Title: Hide All Shorts
 ! Description: Hide all traces of YouTube shorts, Instagram or Facebook Reels
-! Version: 2026.04.23
-! Last modified: 2026-04-24
+! Version: 2026.04.22
+! Last modified: 2026-04-22
 ! Expires: 2 weeks (update frequency)
 ! Homepage: https://github.com/ricardofauch/ublock-hide-shorts
 ! License: https://github.com/ricardofauch/ublock-hide-shorts/blob/main/LICENSE
@@ -46,7 +46,6 @@ www.youtube.com##yt-chip-cloud-chip-renderer:has(yt-formatted-string:has-text(/^
 ! Hide shorts grid on search results
 ! Text-based match on the Shorts header — resilient to CSS class naming changes
 www.youtube.com##grid-shelf-view-model:has(h2:has-text(/^Shorts$/i))
-! www.youtube.com##ytd-item-section-renderer:has(grid-shelf-view-model:has(h2:has-text(/^Shorts$/i)))
 www.youtube.com##.ytGridShelfViewModelHost:has(h2:has-text(/^Shorts$/i))
 
 ! Keep only videos in search results
