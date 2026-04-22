@@ -28,14 +28,14 @@ www.youtube.com##ytd-guide-entry-renderer:has(yt-formatted-string:has-text(/^Sho
 www.youtube.com##ytd-mini-guide-entry-renderer:has(.title:has-text(/^Shorts$/i))
 
 ! Hide shorts sections except on history page
-www.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytd-rich-section-renderer:has(#title:has-text(/(^| )Shorts( |$)/i))
-www.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytd-reel-shelf-renderer:has(.ytd-reel-shelf-renderer:has-text(/(^| )Shorts( |$)/i))
+! www.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytd-rich-section-renderer:has(#title:has-text(/(^| )Shorts( |$)/i))
+! www.youtube.com##:matches-path(/^(?!\/feed\/history).*$/)ytd-reel-shelf-renderer:has(.ytd-reel-shelf-renderer:has-text(/(^| )Shorts( |$)/i))
 
 ! Hide shorts tab on channel pages
 ! Old style
-www.youtube.com##tp-yt-paper-tab:has(.tp-yt-paper-tab:has-text(Shorts))
+! www.youtube.com##tp-yt-paper-tab:has(.tp-yt-paper-tab:has-text(Shorts))
 ! New style (2023-10)
-www.youtube.com##yt-tab-shape:has-text(/^Shorts$/)
+! www.youtube.com##yt-tab-shape:has-text(/^Shorts$/)
 
 ! Hide short remixes in video descriptions and in suggestions beside the comments
 www.youtube.com##ytd-reel-shelf-renderer:has(#title:has-text(/(^| )Shorts.?Remix.*$/i))
@@ -45,9 +45,9 @@ www.youtube.com##yt-chip-cloud-chip-renderer:has(yt-formatted-string:has-text(/^
 
 ! Hide shorts grid on search results
 ! Text-based match on the Shorts header — resilient to CSS class naming changes
-www.youtube.com##grid-shelf-view-model:has(h2:has-text(/^Shorts$/i))
-www.youtube.com##ytd-item-section-renderer:has(grid-shelf-view-model:has(h2:has-text(/^Shorts$/i)))
-www.youtube.com##.ytGridShelfViewModelHost:has(h2:has-text(/^Shorts$/i))
+! www.youtube.com##grid-shelf-view-model:has(h2:has-text(/^Shorts$/i))
+! www.youtube.com##ytd-item-section-renderer:has(grid-shelf-view-model:has(h2:has-text(/^Shorts$/i)))
+! www.youtube.com##.ytGridShelfViewModelHost:has(h2:has-text(/^Shorts$/i))
 
 ! Keep only videos in search results
 ! Note: also hides ytd-secondary-search-container-renderer ("People also search for" sidebar).
